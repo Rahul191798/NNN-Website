@@ -234,19 +234,22 @@ function ClientsSection() {
         )}
 
         {!loading && clients.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(12px, 3vw, 20px)", justifyContent: "center", alignItems: "center" }}>
-            {clients.map((client) => (
-              <div key={client.id}
-                style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: "clamp(12px, 2vw, 16px) clamp(16px, 3vw, 28px)", display: "flex", alignItems: "center", justifyContent: "center", minWidth: "clamp(100px, 20vw, 140px)", minHeight: "clamp(60px, 12vw, 80px)", transition: "all 0.2s" }}
-                onMouseEnter={e => e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,51,102,0.1)"}
-                onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}>
-                {client.logo_url ? (
-                  <img src={client.logo_url} alt={client.name} style={{ maxHeight: "clamp(36px, 8vw, 48px)", maxWidth: "clamp(80px, 20vw, 120px)", objectFit: "contain" }} />
-                ) : (
-                  <span style={{ color: "#003366", fontWeight: 700, fontSize: "clamp(13px, 2vw, 15px)" }}>{client.name}</span>
-                )}
-              </div>
-            ))}
+          <div className="carousel-container">
+            <div className="carousel-track">
+              {[...clients, ...clients].map((client, idx) => (
+                <div key={`${client.id}-${idx}`}
+                  className="carousel-item"
+                  style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: "clamp(12px, 2vw, 16px) clamp(16px, 3vw, 28px)", display: "flex", alignItems: "center", justifyContent: "center", minHeight: "clamp(60px, 12vw, 80px)", transition: "all 0.2s", cursor: "pointer" }}
+                  onMouseEnter={e => e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,51,102,0.1)"}
+                  onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}>
+                  {client.logo_url ? (
+                    <img src={client.logo_url} alt={client.name} style={{ maxHeight: "clamp(36px, 8vw, 48px)", maxWidth: "clamp(80px, 20vw, 120px)", objectFit: "contain" }} />
+                  ) : (
+                    <span style={{ color: "#003366", fontWeight: 700, fontSize: "clamp(13px, 2vw, 15px)" }}>{client.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -255,13 +258,16 @@ function ClientsSection() {
             <p style={{ textAlign: "center", color: "#8a9ab0", fontSize: "clamp(12px, 2vw, 13px)", marginBottom: 28 }}>
               (Sample clients — add your real clients via Supabase dashboard)
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(12px, 3vw, 20px)", justifyContent: "center" }}>
-              {placeholders.map((name) => (
-                <div key={name}
-                  style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: "clamp(12px, 2vw, 20px) clamp(16px, 3vw, 32px)", minWidth: "clamp(100px, 20vw, 130px)", textAlign: "center", color: "#003366", fontWeight: 700, fontSize: "clamp(13px, 2vw, 15px)", opacity: 0.6 }}>
-                  {name}
-                </div>
-              ))}
+            <div className="carousel-container">
+              <div className="carousel-track">
+                {[...placeholders, ...placeholders].map((name, idx) => (
+                  <div key={`${name}-${idx}`}
+                    className="carousel-item"
+                    style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 12, padding: "clamp(12px, 2vw, 20px) clamp(16px, 3vw, 32px)", textAlign: "center", color: "#003366", fontWeight: 700, fontSize: "clamp(13px, 2vw, 15px)", opacity: 0.6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    {name}
+                  </div>
+                ))}
+              </div>
             </div>
           </>
         )}

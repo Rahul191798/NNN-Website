@@ -115,19 +115,21 @@ code {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - clamp(6px, 1.5vw, 10px)));
   }
 }
 
 .carousel-container {
   overflow: hidden;
   width: 100%;
+  background: #F5F7FA;
 }
 
 .carousel-track {
   display: flex;
-  animation: carousel-scroll 20s linear infinite;
+  animation: carousel-scroll 25s linear infinite;
   gap: clamp(12px, 3vw, 20px);
+  width: fit-content;
 }
 
 .carousel-track:hover {
@@ -137,4 +139,5 @@ code {
 .carousel-item {
   flex-shrink: 0;
   min-width: clamp(100px, 20vw, 140px);
+  height: clamp(60px, 12vw, 80px);
 }

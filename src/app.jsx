@@ -50,7 +50,7 @@ function Navbar({ onPortalClick }) {
           <div style={{ width: 42, height: 42, background: "#C8960C", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
             <span style={{ color: "#fff", fontWeight: 900, fontSize: 16 }}>N³</span>
           </div>
-          <div style={{ display: "none", "@media (minWidth: 768px)": { display: "block" } }}>
+          <div>
             <div style={{ color: "#fff", fontWeight: 700, fontSize: "clamp(13px, 2vw, 15px)", lineHeight: 1.2 }}>Nihon Naukri Navigator</div>
             <div style={{ color: "#C8960C", fontSize: "clamp(8px, 1vw, 10px)", letterSpacing: 1.5, textTransform: "uppercase" }}>Pvt. Ltd.</div>
           </div>
